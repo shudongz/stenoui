@@ -1,0 +1,38 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Query Packets</h1>
+  <form name="form" action="{{ url_for('query') }}" method="post">
+      {{ form.hidden_tag() }}
+      <p>
+          Extract name:<br>
+          {{ form.name }}<br>
+      </p>
+      <p>
+          Start time:<br>
+          {{ form.start }}
+      </p>
+      <p>
+          End time:<br>
+          {{ form.end }}
+      </p>
+      <p>
+          Host (IPv4/v6):<br>
+          {{ form.host }}
+      </p>
+      <p>
+          Net (addr/mask-bits):<br>
+          {{ form.net }}
+      </p>
+      <p>
+          IP Protocol:<br>
+          {{ form.ipproto }}
+      </p>
+      <p>
+          Port number:<br>
+          {{ form.port }}
+      </p>
+      <p><input type="submit" value="query"></p>
+  </form>
+{% endblock %}
