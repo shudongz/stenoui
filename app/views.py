@@ -1,4 +1,5 @@
-from flask import render_template, flash, redirect, url_for, request
+from subprocess import call
+from flask import render_template, flash, redirect, url_for, request, send_from_directory
 from app import app
 from .forms import *
 
@@ -8,7 +9,6 @@ def query():
     form = QueryForm()
     if request.method == 'POST':
         query = ''
-        outfile = form.name.data + '.pcap'
         start = form.start.data
         if start:
             query = 'after ' + start.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -34,11 +34,19 @@ def query():
                 query += ' and '
             query += 'port ' + str(form.port.data)
         flash('Query: ' + query)
-        flash('Output: ' + outfile)
-        return render_template('result.html',
-                               output=outfile
-                               )
+        cmd = [ 'stenoread', query, '-w', '/tmp/output.pcap' ]
+        call(cmd)
+        return redirect(url_for('download'))
     return render_template('query.html',
-                           title='Stenographer',
                            form=form
+                           )
+
+@app.route('/download', methods=['GET', 'POST'])
+def download():
+    if request.method == 'POST':
+        return send_from_directory('/tmp', 'output.pcap')
+    form = Download()
+    return render_template('download.html',
+                           form=form,
+                           output='/tmp/output.pcap'
                            )

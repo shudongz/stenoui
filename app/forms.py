@@ -1,7 +1,7 @@
 import pytz
 from datetime import datetime
-from flask.ext.wtf import Form
-from wtforms import StringField, IntegerField, DateTimeField
+from flask_wtf import Form
+from wtforms import StringField, IntegerField, DateTimeField, SubmitField
 from wtforms.validators import DataRequired, Required
 
 class QueryForm(Form):
@@ -17,3 +17,6 @@ class QueryForm(Form):
     net = StringField('Host')
     ipproto = IntegerField('Protocol')
     port = IntegerField('Port')
+
+class Download(Form):
+    submit = SubmitField('Download')

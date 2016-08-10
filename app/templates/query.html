@@ -6,10 +6,6 @@
   <form name="form" action="{{ url_for('query') }}" method="post">
       {{ form.hidden_tag() }}
       <p>
-          Extract name:<br>
-          {{ form.name }}<br>
-      </p>
-      <p>
           Start time:<br>
           {{ form.start }}
       </p>

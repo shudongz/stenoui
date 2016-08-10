@@ -1,0 +1,13 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Query Result</h1>
+  Pcap file {{ output }}
+  <form name="form" action="{{ url_for('download') }}" method="post">
+      {{ form.hidden_tag() }}
+      <p>
+          {{ form.submit }}
+      </p>
+  </form>
+{% endblock %}
