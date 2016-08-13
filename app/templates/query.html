@@ -6,27 +6,27 @@
   <form name="form" action="{{ url_for('query') }}" method="post">
       {{ form.hidden_tag() }}
       <p>
-          Start time:<br>
+          Start time<br>
           {{ form.start }}
       </p>
       <p>
-          End time:<br>
+          End time<br>
           {{ form.end }}
       </p>
       <p>
-          Host (IPv4/v6):<br>
+          Host (IPv4/v6)<br>
           {{ form.host }}
       </p>
       <p>
-          Net (addr/mask-bits):<br>
+          Net (addr/mask-bits)<br>
           {{ form.net }}
       </p>
       <p>
-          IP Protocol:<br>
+          IP Protocol<br>
           {{ form.ipproto }}
       </p>
       <p>
-          Port number:<br>
+          Port number<br>
           {{ form.port }}
       </p>
       <p><input type="submit" value="query"></p>

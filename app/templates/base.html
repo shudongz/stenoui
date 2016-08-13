@@ -3,7 +3,11 @@
     <title>Big Switch Packet Recorder</title>
   </head>
   <body>
-    <div><a href="/query">Home</a></div>
+    <div>
+      <a href="/query">Query</a>
+      &nbsp;&nbsp;
+      <a href="/download/output.pcap">Download</a>
+    </div>
     <hr>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
