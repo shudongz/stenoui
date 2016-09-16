@@ -7,8 +7,8 @@ from wtforms.validators import DataRequired, Required
 class QueryForm(Form):
     name = StringField('name', validators=[DataRequired()])
     start = DateTimeField(
-        'Start', format="%Y-%m-%dT%H:%M:%S",
-        default=datetime.today
+        'Start', format="%Y-%m-%dT%H:%M:%SZ",
+        default=datetime.utcnow()
     )
     end = DateTimeField(
         'End', format="%Y-%m-%dT%H:%M:%S",
